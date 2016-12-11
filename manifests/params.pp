@@ -14,7 +14,7 @@ class easyrsa::params {
   $ca_name         = 'EasyRSA'
   $key_algo        = 'rsa'
   $key_size        = 2048
-  $dh_key_size     = 4096
+  $dh_key_size     = 2048
   $ca_expire       = 3650
   $key_expire      = 3650
   $country         = 'UK'
