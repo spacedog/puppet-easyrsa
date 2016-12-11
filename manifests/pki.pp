@@ -7,6 +7,7 @@ define easyrsa::pki (
   Enum['rsa', 'ec']
               $key_algo     = $easyrsa::params::key_algo,
   Integer[0]  $key_size     = $easyrsa::params::key_size,
+  Integer[0]  $dh_key_size  = $easyrsa::params::dh_key_size,
   Integer[0]  $ca_expire    = $easyrsa::params::ca_expire,
   String[2]   $country      = $easyrsa::params::country,
   String      $state        = $easyrsa::params::state,
@@ -39,7 +40,7 @@ define easyrsa::pki (
     }
     ->
     exec { "build-dh-${title}":
-      command   => "${easyrsa::install_dir}/easyrsa --pki-dir=${pki} --keysize=${key_size} --batch gen-dh",
+      command   => "${easyrsa::install_dir}/easyrsa --pki-dir=${pki} --keysize=${dh_key_size} --batch gen-dh",
       cwd       => $easyrsa::install_dir,
       creates   => "${pki}/dh.pem",
       provider  => shell,
