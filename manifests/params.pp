@@ -12,11 +12,8 @@ class easyrsa::params {
   $dn_mode         = 'cn_only'
 
   $ca_name         = 'EasyRSA'
-  $key_algo        = 'rsa'
-  $key_size        = 2048
+  $key             = { key => 'rsa', size => 2048, valid_days => 3650 }
   $dh_key_size     = 2048
-  $ca_expire       = 3650
-  $key_expire      = 3650
   $country         = 'UK'
   $state           = 'England'
   $city            = 'Dewsbury'

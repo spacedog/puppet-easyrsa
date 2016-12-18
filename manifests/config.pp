@@ -7,6 +7,8 @@ class easyrsa::config() inherits easyrsa {
   }
 
   create_resources('easyrsa::pki', $easyrsa::pkis)
+  create_resources('easyrsa::ca', $easyrsa::cas)
+  create_resources('easyrsa::dh', $easyrsa::dhparms)
   create_resources('easyrsa::servers', $easyrsa::servers)
   create_resources('easyrsa::clients', $easyrsa::clients)
 }
