@@ -12,7 +12,7 @@ class easyrsa::params {
   $dn_mode         = 'cn_only'
 
   $ca_name         = 'EasyRSA'
-  $key             = { key => 'rsa', size => 2048, valid_days => 3650 }
+  $key             = { algo => 'rsa', size => 2048, valid_days => 3650 }
   $dh_key_size     = 2048
   $country         = 'UK'
   $state           = 'England'

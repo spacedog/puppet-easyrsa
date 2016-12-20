@@ -16,11 +16,11 @@ define easyrsa::ca (
   String      $org_unit     = $easyrsa::params::org_unit,
 ) {
 
-  Easyrsa::Pki[$pki_name] -> Easyrsa::Ca[$title]
+  Easyrsa::Pki[$pki_name] -> Easyrsa::Ca[$pki_name]
 
   $pki = "${easyrsa::pkiroot}/${pki_name}"
 
-  exec { "build-ca-${title}":
+  exec { "build-ca-${pki_name}":
     command   => "${easyrsa::install_dir}/easyrsa --pki-dir='${pki}' --keysize=${key[size]} --batch --use-algo='${key[algo]}' --days=${key[valid_days]} --req-cn='${ca_name}' --dn-mode=${dn_mode} --req-c='${country}' --req-st='${state}' --req-city='${city}' --req-org='${organization}' --req-ou='${org_unit}' build-ca nopass",
     cwd       => $easyrsa::install_dir,
     creates   => ["${pki}/ca.crt", "${pki}/private/ca.key"],
