@@ -2,11 +2,10 @@ require 'spec_helper'
 
 testcases = {
   'default' => {
-    params: { },
+    params: { pki_name: 'pki1' },
     expect: {
       install_dir: '/opt/easyrsa',
       pkiroot: '/etc/easyrsa',
-      ca_name: 'EasyRSA',
       dn_mode: 'cn_only',
       key_algo: 'rsa',
       key_size: 2048,
@@ -21,7 +20,7 @@ testcases = {
   },
   'customized' => {
     params: {
-      ca_name: 'Prime CA',
+      pki_name: 'pki2',
       dn_mode: 'org',
       country: 'US',
       state: 'New Jersey',
@@ -33,7 +32,6 @@ testcases = {
     expect: {
       install_dir: '/opt/easyrsa',
       pkiroot: '/etc/easyrsa',
-      ca_name: 'Prime CA',
       dn_mode: 'org',
       key_algo: 'rsa',
       key_size: 2048,
@@ -48,15 +46,15 @@ testcases = {
   },
 }
 
-describe 'easyrsa::ca' do
+describe 'easyrsa::server' do
 
   testcases.each do |profile, values|
 
       let(:pre_condition) { [
         'contain easyrsa',
         'contain easyrsa::params',
-        'easyrsa::pki { "default": }',
-        'easyrsa::pki { "customized": }',
+        'easyrsa::pki { "pki1": }',
+        'easyrsa::pki { "pki2": }',
       ] }
 
     context "testing #{profile}" do
@@ -64,10 +62,10 @@ describe 'easyrsa::ca' do
       let(:params) { values[:params] }
 
       it do
-        should contain_exec("build-ca-#{title}")
-          .with_command("#{values[:expect][:install_dir]}/easyrsa --pki-dir='#{values[:expect][:pkiroot]}/#{title}' --keysize=#{values[:expect][:key_size]} --batch --use-algo='#{values[:expect][:key_algo]}' --days=#{values[:expect][:valid_days]} --req-cn='#{values[:expect][:ca_name]}' --dn-mode=#{values[:expect][:dn_mode]} --req-c='#{values[:expect][:country]}' --req-st='#{values[:expect][:state]}' --req-city='#{values[:expect][:city]}' --req-org='#{values[:expect][:organization]}' --req-ou='#{values[:expect][:org_unit]}' --req-email='#{values[:expect][:email]}' build-ca nopass")
+        should contain_exec("build-server-#{title}")
+          .with_command("#{values[:expect][:install_dir]}/easyrsa --pki-dir='#{values[:expect][:pkiroot]}/#{params[:pki_name]}' --keysize=#{values[:expect][:key_size]} --batch --use-algo='#{values[:expect][:key_algo]}' --days=#{values[:expect][:valid_days]} --req-cn='#{title}' --dn-mode=#{values[:expect][:dn_mode]} --req-c='#{values[:expect][:country]}' --req-st='#{values[:expect][:state]}' --req-city='#{values[:expect][:city]}' --req-org='#{values[:expect][:organization]}' --req-ou='#{values[:expect][:org_unit]}' --req-email='#{values[:expect][:email]}' build-server-full #{title} nopass")
           .with_cwd("#{values[:expect][:install_dir]}")
-          .with_creates(["#{values[:expect][:pkiroot]}/#{title}/ca.crt", "#{values[:expect][:pkiroot]}/#{title}/private/ca.key"])
+          .with_creates(["#{values[:expect][:pkiroot]}/#{values[:params][:pki_name]}/issued/#{title}.crt", "#{values[:expect][:pkiroot]}/#{values[:params][:pki_name]}/private/#{title}.key"])
           .with_provider('shell')
           .with_timeout('0')
           .with_logoutput(true)
