@@ -20,7 +20,7 @@ define easyrsa::client (
   $pki = "${easyrsa::pkiroot}/${pki_name}"
 
   exec { "build-client-${title}":
-    command   => "${easyrsa::install_dir}/easyrsa --pki-dir='${pki}' --keysize=${key[size]} --batch --use-algo='${key[algo]}' --days=${key[valid_days]} --req-cn='${title}' --dn-mode=${dn_mode} --req-c='${country}' --req-st='${state}' --req-city='${city}' --req-org='${organization}' --req-ou='${org_unit}' build-client-full ${title} nopass",
+    command   => "${easyrsa::install_dir}/easyrsa --pki-dir='${pki}' --keysize=${key[size]} --batch --use-algo='${key[algo]}' --days=${key[valid_days]} --req-cn='${title}' --dn-mode=${dn_mode} --req-c='${country}' --req-st='${state}' --req-city='${city}' --req-org='${organization}' --req-ou='${org_unit}' --req-email='${email}' build-client-full ${title} nopass",
     cwd       => $easyrsa::install_dir,
     creates   => ["${pki}/issued/${title}.crt", "${pki}/private/${title}.key"],
     provider  => shell,
