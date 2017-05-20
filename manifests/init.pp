@@ -14,9 +14,9 @@ class easyrsa (
   Hash                 $clients       = hiera_hash('easyrsa::clients', {}),
 ) inherits easyrsa::params {
 
-  anchor { "${module_name}::begin": } ->
-    class {"${module_name}::repo":} ->
-    class {"${module_name}::install":} ->
-    class {"${module_name}::config":} ->
-  anchor { "${module_name}::end": }
+  anchor { "${module_name}::begin": }
+  -> class {"${module_name}::repo":}
+  -> class {"${module_name}::install":}
+  -> class {"${module_name}::config":}
+  -> anchor { "${module_name}::end": }
 }

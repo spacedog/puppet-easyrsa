@@ -11,7 +11,7 @@ unless ENV['RS_PROVISION'] == 'no' or ENV['BEAKER_provision'] == 'no'
     environmentpath = host.puppet['environmentpath']
     environmentpath = environmentpath.split(':').first if environmentpath
 
-    on host, puppet('module install puppetlabs-stdlib --version 4.16.0')
+    on host, puppet('module install puppetlabs-stdlib --version 4.17.0')
     on host, puppet('module install puppetlabs-vcsrepo --version 1.5.0')
   end
 end
@@ -29,7 +29,6 @@ RSpec.configure do |c|
     hosts.each do |host|
       apply_manifest_on(host, 'package { "git": }')
       copy_module_to(host, :source => proj_root, :module_name => 'easyrsa')
-      shell("/bin/touch #{default['puppetpath']}/hiera.yaml")
     end
   end
 end
