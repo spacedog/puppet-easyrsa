@@ -7,11 +7,11 @@ class easyrsa (
   String               $repo_revision = $easyrsa::params::repo_revision,
   Stdlib::Absolutepath $install_dir   = $easyrsa::params::install_dir,
   Stdlib::Absolutepath $pkiroot       = $easyrsa::params::pkiroot,
-  Hash                 $pkis          = hiera_hash('easyrsa::pkis', {}),
-  Hash                 $cas           = hiera_hash('easyrsa::cas', {}),
-  Hash                 $dhparms       = hiera_hash('easyrsa::dhparms', {}),
-  Hash                 $servers       = hiera_hash('easyrsa::servers', {}),
-  Hash                 $clients       = hiera_hash('easyrsa::clients', {}),
+  Hash                 $pkis          = lookup('easyrsa::pkis', Hash, 'hash', {}),
+  Hash                 $cas           = lookup('easyrsa::cas', Hash, 'hash', {}),
+  Hash                 $dhparms       = lookup('easyrsa::dhparms', Hash, 'hash', {}),
+  Hash                 $servers       = lookup('easyrsa::servers', Hash, 'hash', {}),
+  Hash                 $clients       = lookup('easyrsa::clients', Hash, 'hash', {}),
 ) inherits easyrsa::params {
 
   anchor { "${module_name}::begin": }
