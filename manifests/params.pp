@@ -4,7 +4,7 @@ class easyrsa::params {
   $repo_manage     = true
   $repo_source     = 'https://github.com/OpenVPN/easy-rsa.git'
   $repo_target     = '/opt/easyrsa-git'
-  $repo_revision   = '3.0.1'
+  $repo_revision   = 'v3.0.3'
 
   $install_dir     = '/opt/easyrsa'
   $pkiroot         = '/etc/easyrsa'
