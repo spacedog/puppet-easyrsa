@@ -1,3 +1,9 @@
+## 0.3.1 (February 17, 2018)
+
+Improvements:
+
+  - Ensure package git is installed before cloning the easy-rsa repo.
+
 ## 0.3.0 (February 17, 2018)
 
 Improvements:
