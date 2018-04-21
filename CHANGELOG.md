@@ -1,3 +1,10 @@
+## 0.4.0 (April 21, 2018)
+
+Improvements:
+
+  - Updated module to be `pdk` compliant.
+  - Updated module data to `hiera 5`.
+
 ## 0.3.1 (February 17, 2018)
 
 Improvements:
