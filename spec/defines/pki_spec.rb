@@ -2,52 +2,50 @@ require 'spec_helper'
 
 testcases = {
   'default' => {
-    params: { },
+    params: {},
     expect: {
       install_dir: '/opt/easyrsa',
       pkiroot: '/etc/easyrsa',
-    }
+    },
   },
   'customized' => {
-    params: { },
+    params: {},
     expect: {
       install_dir: '/opt/easyrsa',
       pkiroot: '/etc/easyrsa',
-    }
+    },
   },
 }
 
 describe 'easyrsa::pki' do
-  let(:facts) {{ :is_virtual => 'false' }}
-
-  on_supported_os.select { |_, f| f[:os]['family'] != 'Solaris' }.each do |os, f|
+  on_supported_os.each do |os, facts|
     context "on #{os}" do
       let(:facts) do
-        f.merge(super())
+        facts
       end
 
       testcases.each do |profile, values|
+        let(:pre_condition) do
+          [
+            'contain easyrsa',
+          ]
+        end
 
-        let(:pre_condition) { [
-          'contain easyrsa',
-        ] }
-
-        context "testing #{profile}" do
+        context 'testing #{profile}' do
           let(:title) { profile }
           let(:params) { values[:params] }
 
           it do
-            should contain_exec("build-pki-#{title}")
+            is_expected.to contain_exec("build-pki-#{title}")
               .with_command("#{values[:expect][:install_dir]}/easyrsa --pki-dir='#{values[:expect][:pkiroot]}/#{title}' --batch init-pki")
-              .with_cwd("#{values[:expect][:install_dir]}")
+              .with_cwd(values[:expect][:install_dir])
               .with_creates(["#{values[:expect][:pkiroot]}/#{title}", "#{values[:expect][:pkiroot]}/#{title}/private", "#{values[:expect][:pkiroot]}/#{title}/reqs"])
               .with_provider('shell')
               .with_timeout('0')
               .with_logoutput(true)
           end
         end
-      end #testcases.each
-
+      end
     end
   end
-end #describe
+end

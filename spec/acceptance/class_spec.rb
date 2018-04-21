@@ -1,22 +1,22 @@
 require 'spec_helper_acceptance'
 
-describe 'easyrsa class:', :unless => UNSUPPORTED_PLATFORMS.include?(fact('osfamily')) do
-  it 'should run successfully' do
+describe 'easyrsa class:', unless: UNSUPPORTED_PLATFORMS.include?(fact('osfamily')) do
+  it 'easyrsa is expected run successfully' do
     pp = "class { 'easyrsa': }"
 
     # Apply twice to ensure no errors the second time.
-    apply_manifest(pp, :catch_failures => true) do |r|
-      expect(r.stderr).not_to match(/error/i)
+    apply_manifest(pp, catch_failures: true) do |r|
+      expect(r.stderr).not_to match(%r{error}i)
     end
-    apply_manifest(pp, :catch_failures => true) do |r|
-      expect(r.stderr).not_to eq(/error/i)
+    apply_manifest(pp, catch_failures: true) do |r|
+      expect(r.stderr).not_to eq(%r{error}i)
 
       expect(r.exit_code).to be_zero
     end
   end
 
-  before do
-    shell "rm -fv /etc/easyrsa/*"
+  before(:each) do
+    shell 'rm -fv /etc/easyrsa/*'
   end
 
   context 'ca_manage => true:' do
@@ -26,13 +26,11 @@ describe 'easyrsa class:', :unless => UNSUPPORTED_PLATFORMS.include?(fact('osfam
         pkis => { 'EasyRSA' => {} }
       }"
 
-      apply_manifest(pp, :catch_failures => true) do |r|
-        expect(r.stderr).not_to match(/error/i)
+      apply_manifest(pp, catch_failures: true) do |r|
+        expect(r.stderr).not_to match(%r{error}i)
       end
 
       shell('test -e /etc/easyrsa/EasyRSA')
-
     end
   end
-
 end
