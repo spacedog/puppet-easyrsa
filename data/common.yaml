@@ -1,0 +1,23 @@
+---
+easyrsa::repo_manage: true
+easyrsa::repo_source: 'https://github.com/OpenVPN/easy-rsa.git'
+easyrsa::repo_target: '/opt/easyrsa-git'
+easyrsa::repo_revision: 'v3.0.3'
+
+easyrsa::install_dir: '/opt/easyrsa'
+easyrsa::pkiroot: '/etc/easyrsa'
+
+# Defaults
+easyrsa::dn_mode: 'cn_only'
+easyrsa::ca_name: 'EasyRSA'
+easyrsa::key:
+  algo: 'rsa'
+  size: 2048
+  valid_days: 3650
+easyrsa::dh_key_size: 2048
+easyrsa::country: 'UK'
+easyrsa::state: 'England'
+easyrsa::city: 'Dewsbury'
+easyrsa::email: 'you@yourcompany.com'
+easyrsa::organization: 'Your Company Limited'
+easyrsa::org_unit: 'your_dept'

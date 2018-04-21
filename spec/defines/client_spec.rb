@@ -57,7 +57,6 @@ describe 'easyrsa::client' do
         let(:pre_condition) do
           [
             'contain easyrsa',
-            'contain easyrsa::params',
             'easyrsa::pki { "pki1": }',
             'easyrsa::pki { "pki2": }',
           ]
