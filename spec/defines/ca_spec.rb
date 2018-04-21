@@ -59,7 +59,6 @@ describe 'easyrsa::ca' do
         let(:pre_condition) do
           [
             'contain easyrsa',
-            'contain easyrsa::params',
             'easyrsa::pki { "default": }',
             'easyrsa::pki { "customized": }',
           ]

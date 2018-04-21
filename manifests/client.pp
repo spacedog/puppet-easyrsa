@@ -2,17 +2,17 @@
 define easyrsa::client (
   String      $pki_name,
   Enum['cn_only', 'org']
-              $dn_mode      = $easyrsa::params::dn_mode,
+              $dn_mode      = lookup('easyrsa::dn_mode'),
   Struct[{algo       => Enum[rsa, ec],
           size       => Integer[0],
           valid_days => Integer[0]}]
-              $key          = $easyrsa::params::key,
-  String[2]   $country      = $easyrsa::params::country,
-  String      $state        = $easyrsa::params::state,
-  String      $city         = $easyrsa::params::city,
-  String      $email        = $easyrsa::params::email,
-  String      $organization = $easyrsa::params::organization,
-  String      $org_unit     = $easyrsa::params::org_unit,
+              $key          = lookup('easyrsa::key'),
+  String[2]   $country      = lookup('easyrsa::country'),
+  String      $state        = lookup('easyrsa::state'),
+  String      $city         = lookup('easyrsa::city'),
+  String      $email        = lookup('easyrsa::email'),
+  String      $organization = lookup('easyrsa::organization'),
+  String      $org_unit     = lookup('easyrsa::org_unit'),
   ) {
 
   Easyrsa::Pki[$pki_name] -> Easyrsa::Client[$title]

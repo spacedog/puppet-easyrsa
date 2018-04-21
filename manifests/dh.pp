@@ -1,7 +1,7 @@
 
 define easyrsa::dh (
-  String      $pki_name     = $title,
-  Integer[0]  $key_size  = $easyrsa::params::dh_key_size,
+  String      $pki_name  = $title,
+  Integer[0]  $key_size  = lookup('easyrsa::dh_key_size'),
 ) {
 
   Easyrsa::Pki[$pki_name] -> Easyrsa::Dh[$title]
