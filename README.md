@@ -1,6 +1,6 @@
 # rehan-easyrsa
 
-[![Build Status](https://travis-ci.org/rehanone/puppet-easyrsa.svg?branch=master)](https://travis-ci.org/rehanone/puppet-easyrsa)
+[![Puppet Forge](http://img.shields.io/puppetforge/v/rehan/easyrsa.svg)](https://forge.puppetlabs.com/rehan/easyrsa) [![Build Status](https://travis-ci.org/rehanone/puppet-easyrsa.svg?branch=master)](https://travis-ci.org/rehanone/puppet-easyrsa)
 
 #### Table of Contents
 1. [Overview](#overview)

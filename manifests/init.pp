@@ -9,7 +9,7 @@ class easyrsa (
   Stdlib::Absolutepath $pkiroot,
   Hash                 $pkis          = lookup('easyrsa::pkis', Hash, 'hash', {}),
   Hash                 $cas           = lookup('easyrsa::cas', Hash, 'hash', {}),
-  Hash                 $dhparms       = lookup('easyrsa::dhparms', Hash, 'hash', {}),
+  Hash                 $dhparams      = lookup('easyrsa::dhparams', Hash, 'hash', {}),
   Hash                 $servers       = lookup('easyrsa::servers', Hash, 'hash', {}),
   Hash                 $clients       = lookup('easyrsa::clients', Hash, 'hash', {}),
 ) {
