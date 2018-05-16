@@ -4,16 +4,16 @@ node default {
   notify { 'enduser-after': }
 
   class { 'easyrsa':
-    pkis    => {
+    pkis     => {
       'test-pki' => {},
     },
-    cas     => {
+    cas      => {
       'test-pki' => {},
     },
-    dhparms => {
+    dhparams => {
       'test-pki' => {},
     },
-    require => Notify['enduser-before'],
-    before  => Notify['enduser-after'],
+    require  => Notify['enduser-before'],
+    before   => Notify['enduser-after'],
   }
 }

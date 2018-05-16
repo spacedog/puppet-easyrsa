@@ -23,14 +23,25 @@ describe 'easyrsa class:', unless: UNSUPPORTED_PLATFORMS.include?(fact('osfamily
     it 'runs successfully' do
       pp = "class { 'easyrsa':
         repo_manage => true,
-        pkis => { 'EasyRSA' => {} }
+        pkis => { 'CA' => {} },
+        cas => { 'CA' => {} },
+        dhparams => { 'CA' => {} },
+        servers => { 'server' => { pki_name => 'CA' } },
+        clients => { 'client' => { pki_name => 'CA' } }
       }"
 
       apply_manifest(pp, catch_failures: true) do |r|
         expect(r.stderr).not_to match(%r{error}i)
       end
 
-      shell('test -e /etc/easyrsa/EasyRSA')
+      shell('test -e /etc/easyrsa/CA')
+      shell('test -e /etc/easyrsa/CA/ca.crt')
+      shell('test -e /etc/easyrsa/CA/private/ca.key')
+      shell('test -e /etc/easyrsa/CA/dh.pem')
+      shell('test -e /etc/easyrsa/CA/issued/server.crt')
+      shell('test -e /etc/easyrsa/CA/private/server.key')
+      shell('test -e /etc/easyrsa/CA/issued/client.crt')
+      shell('test -e /etc/easyrsa/CA/private/client.key')
     end
   end
 end
