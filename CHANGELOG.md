@@ -1,3 +1,13 @@
+## 0.5.0 (May 16, 2018)
+
+Improvements:
+
+- Improved acceptance tests.
+
+Bugfixs:
+
+- Fix resource names passed to `create_resources()`. ([#12](https://github.com/rehanone/puppet-easyrsa/pull/12); simondeziel)
+
 ## 0.4.1 (May 9, 2018)
 
 Improvements:
