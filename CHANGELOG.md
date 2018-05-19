@@ -1,3 +1,9 @@
+## 0.5.1 (May 18, 2018)
+
+Bugfixs:
+
+- Minor documentation fixes.
+
 ## 0.5.0 (May 16, 2018)
 
 Improvements:

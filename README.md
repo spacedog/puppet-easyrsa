@@ -33,7 +33,7 @@ This module clones Easy-RSA from the repository at:
 ## Setup
 In order to install `rehan-easyrsa`, run the following command:
 ```bash
-$ sudo puppet module install rehan-easyrsa
+$ puppet module install rehan-easyrsa
 ```
 The module does expect all the data to be provided through 'Hiera'. See [Usage](#usage) for examples on how to configure it.
 
@@ -63,5 +63,5 @@ include easyrsa
 
 ## Development
 
-You can submit pull requests and create issues through the official page of this module: https://github.com/rehan/puppet-cfssl.
+You can submit pull requests and create issues through the official page of this module: https://github.com/rehan/puppet-easyrsa.
 Please do report any bug and suggest new features/improvements.
