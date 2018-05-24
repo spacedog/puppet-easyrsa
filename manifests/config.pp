@@ -11,4 +11,5 @@ class easyrsa::config() inherits easyrsa {
   create_resources('easyrsa::dh', $easyrsa::dhparams)
   create_resources('easyrsa::server', $easyrsa::servers)
   create_resources('easyrsa::client', $easyrsa::clients)
+  create_resources('easyrsa::revoke', $easyrsa::revocations)
 }

@@ -13,6 +13,13 @@ appveyor.yml:
 .rubocop.yml:
   selected_profile: strict
   default_configs: &default_configs
+    AllCops:
+      DisplayCopNames: true
+      TargetRubyVersion: '2.1'
+      Include:
+      - "./**/*.rb"
+      Exclude:
+      - Vagrantfile
     Style/UnneededPercentQ:
       Enabled: false
 

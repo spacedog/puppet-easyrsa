@@ -12,6 +12,7 @@ class easyrsa (
   Hash                 $dhparams      = lookup('easyrsa::dhparams', Hash, 'hash', {}),
   Hash                 $servers       = lookup('easyrsa::servers', Hash, 'hash', {}),
   Hash                 $clients       = lookup('easyrsa::clients', Hash, 'hash', {}),
+  Hash                 $revocations   = lookup('easyrsa::revocations', Hash, 'hash', {}),
 ) {
 
   anchor { "${module_name}::begin": }
