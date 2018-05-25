@@ -1,3 +1,9 @@
+## 0.6.0 (May 24, 2018)
+
+Improvements:
+
+- Added support for certificate revocations.
+
 ## 0.5.1 (May 18, 2018)
 
 Bugfixs:
