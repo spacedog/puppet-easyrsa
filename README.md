@@ -58,8 +58,8 @@ include easyrsa
 * [stdlib][1]
 * [vcsrepo][2]
 
-[1]:https://github.com/puppetlabs/puppetlabs-stdlib
-[2]:https://github.com/puppetlabs/puppetlabs-vcsrepo
+[1]:https://forge.puppet.com/puppetlabs/stdlib
+[2]:https://forge.puppet.com/puppetlabs/vcsrepo
 
 ## Development
 
