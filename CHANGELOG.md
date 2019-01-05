@@ -1,3 +1,11 @@
+## 0.8.0 (January 4, 2019)
+
+Improvements:
+
+- Updated `Easy RSA` from version 3.0.3 to 3.0.5.
+- Updated tests.
+- Updated `pdk` templates.
+
 ## 0.7.0 (October 14, 2018)
 
 Improvements:
