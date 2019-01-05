@@ -3,13 +3,13 @@ VAGRANTFILE_API_VERSION = "2"
 
 Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
-  config.vm.box = "bento/ubuntu-16.04"
-  config.vm.box_url = "https://app.vagrantup.com/bento/boxes/ubuntu-16.04"
+  config.vm.box = "bento/ubuntu-18.04"
+  config.vm.box_url = "https://app.vagrantup.com/bento/boxes/ubuntu-18.04"
 
   config.vm.synced_folder ".", "/etc/puppetlabs/code/environments/production/modules/easyrsa"
 
   config.vm.provision :shell, inline: <<-EOF
-    readonly source_file="puppet5-release-xenial.deb"
+    readonly source_file="puppet6-release-bionic.deb"
     readonly source_url="https://apt.puppetlabs.com/"
 
     if [ -f ${source_file} ]; then
