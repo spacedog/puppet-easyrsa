@@ -21,7 +21,7 @@ describe 'easyrsa' do
             ensure: 'present',
             provider: 'git',
             source: 'https://github.com/OpenVPN/easy-rsa.git',
-            revision: 'v3.0.5',
+            revision: 'v3.0.6',
           )
         }
 
