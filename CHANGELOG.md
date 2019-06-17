@@ -1,3 +1,12 @@
+## 1.0.0 (June 16, 2019)
+
+Improvements:
+
+- Updated `Easy RSA` from version 3.0.5 to 3.0.6.
+- Updated minimum `puppet` version to 5.5.10.
+- Updated os support matrix.
+- Updated `pdk` templates.
+
 ## 0.8.0 (January 4, 2019)
 
 Improvements:
