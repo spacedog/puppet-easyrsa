@@ -1,16 +1,6 @@
 ---
-.rubocop.yml:
-  selected_profile: strict
-  default_configs: &default_configs
-    AllCops:
-      DisplayCopNames: true
-      TargetRubyVersion: '2.1'
-      Include:
-        - "./**/*.rb"
-      Exclude:
-        - Vagrantfile
-    Style/UnneededPercentQ:
-      Enabled: false
+appveyor.yml:
+  delete: true
 
 .gitlab-ci.yml:
   delete: true
@@ -19,15 +9,14 @@
   delete: true
 
 .travis.yml:
-  bundler_args: ""
   docker_sets:
     - set: docker/ubuntu-18.04
     - set: docker/ubuntu-16.04
     - set: docker/ubuntu-14.04
+#    - set: docker/debian-10
     - set: docker/debian-9
     - set: docker/debian-8
     - set: docker/centos-7
-  docker_defaults:
 
 Gemfile:
   required:
@@ -56,13 +45,3 @@ locales/config.yaml:
   default_locale: 'en'
   source_files:
     - './lib/**/*.rb'
-
-spec/acceptance/nodesets/centos-7-x64.yml:
-spec/acceptance/nodesets/debian-8-x64.yml:
-spec/acceptance/nodesets/default.yml:
-spec/acceptance/nodesets/docker/centos-7.yml:
-spec/acceptance/nodesets/docker/debian-8.yml:
-spec/acceptance/nodesets/docker/debian-9.yml:
-spec/acceptance/nodesets/docker/ubuntu-14.04.yml:
-spec/acceptance/nodesets/docker/ubuntu-16.04.yml:
-spec/acceptance/nodesets/docker/ubuntu-18.04.yml:

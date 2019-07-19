@@ -4,7 +4,9 @@ class easyrsa::repo () inherits easyrsa {
 
   if $easyrsa::repo_manage {
 
-    ensure_packages(['git'], {'ensure' => 'present'})
+    if $easyrsa::git_manage {
+      ensure_packages([$easyrsa::git_package], { 'ensure' => 'present' })
+    }
 
     vcsrepo { $easyrsa::repo_target:
       ensure   => present,
