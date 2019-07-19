@@ -1,4 +1,6 @@
 ---
+easyrsa::git_package: 'git'
+easyrsa::git_manage: true
 easyrsa::repo_manage: true
 easyrsa::repo_source: 'https://github.com/OpenVPN/easy-rsa.git'
 easyrsa::repo_target: '/opt/easyrsa-git'

@@ -1,6 +1,8 @@
 
 # Setup easyrsa scripts
 class easyrsa (
+  String               $git_package,
+  Boolean              $git_manage,
   Boolean              $repo_manage,
   Stdlib::Httpsurl     $repo_source,
   Stdlib::Absolutepath $repo_target,
