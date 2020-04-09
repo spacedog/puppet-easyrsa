@@ -1,3 +1,10 @@
+## 1.2.0 (April 8, 2020)
+
+Improvements:
+
+- Updated `Easy RSA` from version 3.0.6 to 3.0.7.
+- Updated `pdk` templates.
+
 ## 1.1.0 (February 13, 2020)
 
 Improvements:
