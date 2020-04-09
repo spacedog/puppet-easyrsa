@@ -4,7 +4,7 @@ easyrsa::git_manage: true
 easyrsa::repo_manage: true
 easyrsa::repo_source: 'https://github.com/OpenVPN/easy-rsa.git'
 easyrsa::repo_target: '/opt/easyrsa-git'
-easyrsa::repo_revision: 'v3.0.6'
+easyrsa::repo_revision: 'v3.0.7'
 
 easyrsa::install_dir: '/opt/easyrsa'
 easyrsa::pkiroot: '/etc/easyrsa'
