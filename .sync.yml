@@ -10,6 +10,7 @@ appveyor.yml:
 
 .travis.yml:
   docker_sets:
+    - set: docker/ubuntu-20.04
     - set: docker/ubuntu-18.04
     - set: docker/ubuntu-16.04
     - set: docker/ubuntu-14.04
