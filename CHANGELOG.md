@@ -1,3 +1,9 @@
+## 1.2.1 (May 1, 2020)
+
+Improvements:
+
+- Added support for Ubuntu 20.04.
+
 ## 1.2.0 (April 8, 2020)
 
 Improvements:
